@@ -1,26 +1,15 @@
 {
-  "name": "reveal.js",
-  "version": "3.7.0",
-  "description": "The HTML Presentation Framework",
-  "homepage": "http://revealjs.com",
-  "subdomain": "revealjs",
-  "main": "js/reveal.js",
+  "name": "now-presentation",
+  "description": "Presentation about now and github integration",
+  "homepage": "https://now-presentation.frago.xyz",
   "scripts": {
     "test": "grunt test",
     "start": "grunt serve",
     "build": "grunt"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
-  },
-  "engines": {
-    "node": ">=4.0.0"
+    "name": "Francisco González",
+    "web": "frago.xyz"
   },
   "devDependencies": {
     "express": "^4.16.2",
