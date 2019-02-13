@@ -24,8 +24,70 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h1>Now</h1>
+					<h3>Global Serverless Deployments</h3>
+					<p>
+						<a href="https://zeit.co/now" target="__blank">https://zeit.co/now</a>
+					</p>
+				</section>
+				<section>
+					<h2>Features</h2>
+					<ul>
+						<li>Host websites and webservices</li>
+						<li>Deploy lambdas</li>
+						<li>Scale automatically</li>
+						<li>Minimal configuration</li>
+						<li>Deploy whatever you want</li>
+					</ul>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+						## How it works
+						```
+						# Install
+						brew cask install now / npm i -g now
+
+						# Login
+						now login
+
+						# Deploy
+						now
+						```
+					</script>
+				</section>
+				<section>
+					<h2>Configuration</h2>
+					<ul>
+						<li>now.json file</li>
+						<pre><code class="hljs" data-trim contenteditable>
+							{
+							  "name": "my app",
+							  "version": 2,
+							  "alias": ["my-domain.com"]
+							}
+						</code></pre>
+					</ul>
+				</section>
+				<section>
+					<h2>Github integration</h2>
+					<ul>
+						<li>Deploy each push</li>
+						<li>Alias the latest iteration on the default branch</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Examples</h2>
+				</section>
+				<section>
+					<h2>Advanced configuration</h2>
+					<ul>
+						<li>Alias</li>
+						<li>Builders</li>
+						<li>Routes</li>
+						<li>Secrets</li>
+					</ul>
+				</section>
 			</div>
 		</div>
 
