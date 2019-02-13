@@ -35,10 +35,12 @@
 					<h2>Features</h2>
 					<ul>
 						<li>Host websites and webservices</li>
+						<li>Built-in CDN</li>
 						<li>Deploy lambdas</li>
 						<li>Scale automatically</li>
 						<li>Minimal configuration</li>
 						<li>Deploy whatever you want</li>
+						<li>Teams</li>
 					</ul>
 				</section>
 				<section data-markdown>
@@ -60,12 +62,12 @@
 					<h2>Configuration</h2>
 					<ul>
 						<li>now.json file</li>
-						<pre><code class="hljs" data-trim contenteditable>
-							{
-							  "name": "my app",
-							  "version": 2,
-							  "alias": ["my-domain.com"]
-							}
+						<pre><code>
+{
+	"name": "my app",
+	"version": 2,
+	"alias": ["my-domain.com"]
+}
 						</code></pre>
 					</ul>
 				</section>
@@ -87,6 +89,100 @@
 						<li>Routes</li>
 						<li>Secrets</li>
 					</ul>
+				</section>
+				<section>
+					<h2>Aliasing</h2>
+					<ul>
+						<li>Easy to add subdomains</li>
+						<li>Create alias for specific features / epics</li>
+						<a>myfeature.veeloapp.com</a>
+						<li>Test production deployments before aliasing - (Depends on application use case)</li>
+						<li>Easy rollback</li>
+					</ul>
+				</section>
+				<section>
+					<section>
+						<h2>Builders</h2>
+						<p>
+							Modules that take a deployment's source and return an output.
+						</p>
+						<p>
+							If a build step is added, Now will only include its outputs in the resulting deployment.
+						</p>
+						<pre><code>
+{
+	"version": 2,
+	"builds": [
+		{ "src": "function.js", "use": "@now/node" },
+		{ "src": "index.html", "use": "@now/static" }
+	]
+}
+						</code></pre>
+					</section>
+					<section>
+						<ul>
+							<li>Static</li>
+							<li>Lambdas</li>
+							<li>PHP</li>
+							<li>Python <a href="https://zeit.co/docs/v2/deployments/official-builders/python-now-python/" target="__blank">Example</a></li>
+							<li>Cusmos builders <a href="https://www.agiliq.com/blog/2019/02/django-zeit-now-serverless/" target="__blank">Django example</a></li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<h2>Routes</h2>
+					<pre><code>
+{
+	"builds": [
+		{ "src": "*.html", "use": "@now/static" },
+		{ "src": "*.js", "use": "@now/node" },
+	],
+	"routes": [
+		{ "src": "/custom-page", "headers": {"cache-control": "s-maxage=1000"}, "dest": "/index.html" },
+		{ "src": "/api", "dest": "/my-api.js" },
+		{ "src": "/users", "methods": ["POST"], "dest": "/users-api.js" },
+		{ "src": "/.*", "dest": "https://my-old-site.com"},
+		{ "src": "/legacy", "status": 404},
+		{ "src": "/redirect", "status": 301, "headers": { "Location": "https://zeit.co/" } }
+	]
+}
+					</code></pre>
+					<p>
+						Also check <a href="https://zeit.co/examples/create-react-app/" href="__blank">create-react-app example</a>
+					</p>
+				</section>
+				<section>
+					<section>
+						<h2>Secrets</h2>
+						<p>Allows you to store sensitive data needed by your apps to function in a secure way. Once you store a secret, its contents are no longer accessible directly by anyone.</p>
+						<pre><code>
+now -e MY_VARIABLE="Hello world :)"
+
+# In a node server you can access it in the following way:
+process.env.MY_VARIABLE
+						</code></pre>
+						<pre><code>
+now secret add acme-api-key my-value-here
+						</code></pre>
+						<pre><code>
+now -e MY_VARIABLE=@acme-api-key
+						</code></pre>
+					</section>
+					<section>
+						<pre><code>
+{
+	name: "myApp",
+	version: 2, 
+	"env": {
+		"MY_VARIABLE": "@acme-api-key"
+	}
+}
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h2>Thank you</h2>
+					<a href="https://github.com/frago12/now-presentation">github.com/frago12/now-presentation</a>
 				</section>
 			</div>
 		</div>
